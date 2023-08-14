@@ -585,20 +585,26 @@ module.exports = function (params, cy) {
         // the null checks are not theoretically required
         // but they protect from bad synchronious calls of refreshDraws()
         if(endpointShape1 === null){
-          endpointShape1 = new Konva.Circle({
-            x: sourceEndPointX + length,
-            y: sourceEndPointY + length,
-            radius: length,
+          endpointShape1 = new Konva.Rect({
+            x: renderedTopLeftPos.x,
+            y: renderedTopLeftPos.y,
+            width: length,
+            height: length,
             fill: '#28B6F2',
+            strokeWidth: 0,
+            draggable: true
           });
         }
 
         if(endpointShape2 === null){
-          endpointShape2 = new Konva.Circle({
-            x: targetEndPointX + length,
-            y: targetEndPointY + length,
-            radius: length,
+          endpointShape2 = new Konva.Rect({
+            x: renderedTopLeftPos.x,
+            y: renderedTopLeftPos.y,
+            width: length,
+            height: length,
             fill: '#28B6F2',
+            strokeWidth: 0,
+            draggable: true
           });
         }
 
