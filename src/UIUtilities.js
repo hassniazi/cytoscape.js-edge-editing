@@ -589,7 +589,7 @@ module.exports = function (params, cy) {
             x: sourceEndPointX + length,
             y: sourceEndPointY + length,
             radius: length,
-            fill: 'black',
+            fill: '#28B6F2',
           });
         }
 
@@ -598,7 +598,7 @@ module.exports = function (params, cy) {
             x: targetEndPointX + length,
             y: targetEndPointY + length,
             radius: length,
-            fill: 'black',
+            fill: '#28B6F2',
           });
         }
 
