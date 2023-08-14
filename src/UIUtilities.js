@@ -231,7 +231,7 @@ module.exports = function (params, cy) {
             y: renderedTopLeftPos.y,
             width: length,
             height: length,
-            fill: 'black',
+            fill: '#28B6F2',
             strokeWidth: 0,
             draggable: true
           });
