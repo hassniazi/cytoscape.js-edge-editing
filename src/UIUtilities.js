@@ -217,24 +217,25 @@ module.exports = function (params, cy) {
           canvas.draw();
         },
         // render a anchor shape with the given parameters
-         renderAnchorShape(anchorX, anchorY, length) {
+        renderAnchorShape: function(anchorX, anchorY, length) {
           // get the top left coordinates
           var topLeftX = anchorX - length / 2;
           var topLeftY = anchorY - length / 2;
-        
+          
           // convert to rendered parameters
           var renderedTopLeftPos = convertToRenderedPosition({x: topLeftX, y: topLeftY});
           length *= cy.zoom();
           
-          var newAnchor = new Konva.Circle({
-            x: renderedTopLeftPos.x + length / 2,
-            y: renderedTopLeftPos.y + length / 2,
-            radius: length / 2,
+          var newAnchor = new Konva.Rect({
+            x: renderedTopLeftPos.x,
+            y: renderedTopLeftPos.y,
+            width: length,
+            height: length,
             fill: 'black',
             strokeWidth: 0,
             draggable: true
           });
-        
+
           this.anchors.push(newAnchor);
           this.bindListeners(newAnchor);
           canvas.add(newAnchor);
@@ -584,26 +585,20 @@ module.exports = function (params, cy) {
         // the null checks are not theoretically required
         // but they protect from bad synchronious calls of refreshDraws()
         if(endpointShape1 === null){
-          endpointShape1 = new Konva.Rect({
-            x: renderedTopLeftPos.x,
-            y: renderedTopLeftPos.y,
-            width: length,
-            height: length,
-            fill: '#28B6F2',
-            strokeWidth: 0,
-            draggable: true
+          endpointShape1 = new Konva.Circle({
+            x: sourceEndPointX + length,
+            y: sourceEndPointY + length,
+            radius: length,
+            fill: 'black',
           });
         }
 
         if(endpointShape2 === null){
-          endpointShape2 = new Konva.Rect({
-            x: renderedTopLeftPos.x,
-            y: renderedTopLeftPos.y,
-            width: length,
-            height: length,
-            fill: '#28B6F2',
-            strokeWidth: 0,
-            draggable: true
+          endpointShape2 = new Konva.Circle({
+            x: targetEndPointX + length,
+            y: targetEndPointY + length,
+            radius: length,
+            fill: 'black',
           });
         }
 
