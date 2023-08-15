@@ -217,25 +217,24 @@ module.exports = function (params, cy) {
           canvas.draw();
         },
         // render a anchor shape with the given parameters
-        renderAnchorShape: function(anchorX, anchorY, length) {
+        function renderAnchorShape(anchorX, anchorY, length) {
           // get the top left coordinates
           var topLeftX = anchorX - length / 2;
           var topLeftY = anchorY - length / 2;
-          
+        
           // convert to rendered parameters
           var renderedTopLeftPos = convertToRenderedPosition({x: topLeftX, y: topLeftY});
           length *= cy.zoom();
           
-          var newAnchor = new Konva.Rect({
-            x: renderedTopLeftPos.x,
-            y: renderedTopLeftPos.y,
-            width: length,
-            height: length,
-            fill: '#28B6F2',
+          var newAnchor = new Konva.Circle({
+            x: renderedTopLeftPos.x + length / 2,
+            y: renderedTopLeftPos.y + length / 2,
+            radius: length / 2,
+            fill: 'black',
             strokeWidth: 0,
             draggable: true
           });
-
+        
           this.anchors.push(newAnchor);
           this.bindListeners(newAnchor);
           canvas.add(newAnchor);
