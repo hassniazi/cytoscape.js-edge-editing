@@ -217,7 +217,7 @@ module.exports = function (params, cy) {
           canvas.draw();
         },
         // render a anchor shape with the given parameters
-        function renderAnchorShape(anchorX, anchorY, length) {
+         renderAnchorShape(anchorX, anchorY, length) {
           // get the top left coordinates
           var topLeftX = anchorX - length / 2;
           var topLeftY = anchorY - length / 2;
